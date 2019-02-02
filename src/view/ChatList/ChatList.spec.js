@@ -24,7 +24,7 @@ describe('<ChatList>', ()=>{
   }];
 
   beforeEach(()=>{
-    wrapper = shallow(<ChatList/>);
+    wrapper = shallow(<ChatList chatLog={chatLog}/>);
     jest.spyOn(ChatList.prototype, 'handleChange');
   });
 

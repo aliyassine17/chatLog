@@ -12,7 +12,7 @@ exports[`<ChatList> renders without crashing 1`] = `
     </label>
     <input
       id="showRecords"
-      max={0}
+      max={2}
       min="1"
       name="showRecords"
       onChange={[Function]}
@@ -22,6 +22,29 @@ exports[`<ChatList> renders without crashing 1`] = `
   </div>
   <div
     className="messages"
-  />
+  >
+    <ChatMessage
+      avatar={null}
+      chatLog={Array []}
+      email="robin@example.com"
+      fullName="Robin Balmforth"
+      key="12356"
+      message="Hello, World!"
+      messageId="12356"
+      timestamp="2016-06-03T20:24:29Z"
+      userId="613651251"
+    />
+    <ChatMessage
+      avatar={null}
+      chatLog={Array []}
+      email="robin6@example.com"
+      fullName="Robin Balmforthh"
+      key="123567"
+      message="Hello, World!"
+      messageId="123567"
+      timestamp="2016-06-03T20:24:29Zh"
+      userId="6136512517"
+    />
+  </div>
 </Fragment>
 `;

@@ -1,25 +1,18 @@
 import React, { Component, Fragment } from  'react';
+import { PropTypes } from 'prop-types';
 import './style.css';
 import ChatMessage from './../ChatMessage';
-import getChatLog from './../../service';
 
 
 class ChatList extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      chatLog: [],
       showRecords: 10
     };
     this.handleChange =  this.handleChange.bind(this);
   }
-  componentDidMount(){
-    getChatLog().then(chatLog =>{
-      this.setState({
-        chatLog
-      });
-    });
-  }
+
   handleChange(e){
     const { name,value } = e.target;
     this.setState({
@@ -27,7 +20,14 @@ class ChatList extends Component{
     });
   }
   render(){
-    const { chatLog,showRecords } = this.state;
+
+    const { showRecords } = this.state;
+    const { chatLog } = this.props;
+
+    if (!chatLog){
+      return null;
+    }
+
     let displayPerPage = 10;
     if (!isNaN(showRecords) && showRecords <= chatLog.length ){
       displayPerPage = showRecords;
@@ -56,6 +56,23 @@ class ChatList extends Component{
 }
 
 
+ChatList.propTypes = {
+  chatLog: PropTypes.arrayOf(
+    PropTypes.shape({
+      messageId: PropTypes.string,
+      userId: PropTypes.string,
+      fullName: PropTypes.string,
+      timestamp: PropTypes.string,
+      email: PropTypes.string,
+      message: PropTypes.string,
+      avatar: PropTypes.string
+    })
+  )
+};
+
+ChatMessage.defaultProps = {
+  chatLog: []
+};
 
 
 export default ChatList;
