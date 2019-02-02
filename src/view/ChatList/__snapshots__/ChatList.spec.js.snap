@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatList> renders without crashing 1`] = `
+<Fragment>
+  <div
+    className="filter"
+  >
+    <label
+      htmlFor="showRecords"
+    >
+      Records per page 
+    </label>
+    <input
+      id="showRecords"
+      max={0}
+      min="1"
+      name="showRecords"
+      onChange={[Function]}
+      type="number"
+      value={10}
+    />
+  </div>
+  <div
+    className="messages"
+  />
+</Fragment>
+`;
