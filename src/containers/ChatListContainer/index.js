@@ -7,7 +7,7 @@ import ChatList from './../../view/ChatList';
 
 
 
-class ChatListContainer extends React.Component {
+export class ChatListContainer extends React.Component {
   componentDidMount(){
     this.props.fetchChatLog();
   }
