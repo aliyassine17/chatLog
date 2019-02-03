@@ -1,0 +1,35 @@
+image: image_name_goes_here
+
+services:
+- docker:dind
+
+variables:
+DOCKER_HOST: localhost:9999
+
+before_script:
+  - docker info
+  - docker login -u=USERNAME -p=PASSWORD DOCKER_CLOUD_REPO
+  - npm install
+
+stages:
+  - test
+  - release
+
+unit_test:
+  stage: test
+  script:
+    npm run test 
+
+deploy_assets:
+  stage: release
+  script:
+    - npm build
+    - docker build --tag PROJECT_NAME --tag REPO/PROJECT_NAME:VERSION
+    - docker push REPO/PROJECT_NAME:VERSION
+  only:
+    - master
+
+
+
+
+

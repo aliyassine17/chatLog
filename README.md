@@ -53,5 +53,7 @@
 
 1. more feature files for the react components
 2. Records per page filter needs to be added to redux store,  also the filtering action needs to be defined.
+3. Implement the nodejs server ./sever.js
+4. move filter to a functional component
 
 

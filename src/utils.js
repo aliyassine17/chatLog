@@ -10,10 +10,24 @@ export const timestampToHumanReadable = (timestamp) => {
   return `${ moment(timestamp).format('DD MMM YYYY') }, ${ moment(timestamp).format('HH:mm:ss') }`;
 };
 
+// sort array of message by date DESC
+const sortMessageByDate = (messages) =>{
+  let sortedMessages = [] ;
+  if (Array.isArray(messages)){
+    sortedMessages = [...messages];
+  }
+  sortedMessages.sort(function(a, b) {
+    const dateA = new Date(a.timestamp), dateB = new Date(b.timestamp);
+    return dateB - dateA;
+  });
+  return sortedMessages;
+};
+
 
 // data formatter as per the requirements
 export const dataFormatter  = (messages, members)  => {
-  const result = messages.map( msg => {
+  const sortedMessages = sortMessageByDate(messages);
+  const result = sortedMessages.map( msg => {
     const {
       id,
       message,
